@@ -46,7 +46,6 @@ def print_optimal_chain_order(div_k, num):
   print("\nOptimal chain order : ", order)
   
 
-
 def get_min_computation(dimensions):
   div_k = 0
   num = len(dimensions)
@@ -62,6 +61,7 @@ def get_min_computation(dimensions):
           if i == 1 and j == num-1:
             div_k = k
   return div_k, m[1][num-1]
+
 
 def main():
   dimensions=[5,3,7,10]
