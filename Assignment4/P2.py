@@ -68,8 +68,11 @@ def main():
   num = len(dimensions)
   matricis = []
   for i in range(num - 1):
-    matrix = [[random.randint(1, 10) for index in range(dimensions[i+1])] for index in range(dimensions[i])]
+    matrix = [[random.randint(1, 6) for index in range(dimensions[i+1])] for index in range(dimensions[i])]
     matricis.append(matrix)
+    print("\nA"+str(i+1),"=", end="")
+    for row in matrix:
+      print("\t",row)
   
   div_k, min_computation = get_min_computation(dimensions)
   
@@ -81,10 +84,10 @@ def main():
     result = matrix_multiplication(matricis[0], matricis[1])
     result = matrix_multiplication(result, matricis[2])
   
-  print("Output matrix : ")
+  print("\nOutput matrix : ")
   print_matrix(result)
   print_optimal_chain_order(div_k, num)
-  print("The minimum number of computations : ", min_computation)\
+  print("\nThe minimum number of computations : ", min_computation)\
 
   
 if __name__ == "__main__":
