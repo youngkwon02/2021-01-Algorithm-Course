@@ -42,8 +42,9 @@ def print_total_value(knapsack):
     total_value += item.get("value") * item.get("fraction")
   print("\n* Maximum value: ", int(total_value))
 
+
 def print_knapsack(knapsack):
-  print("\n<Fully filled knapsack>")
+  print("\n<Associated Items>")
   for item in knapsack:
     print(item)
 
@@ -53,8 +54,6 @@ def main():
   knapsack = fill_knapsack(capacity=16)
   print_knapsack(knapsack)
   print_total_value(knapsack)
-  
-  
   
   
 if __name__ == "__main__":
