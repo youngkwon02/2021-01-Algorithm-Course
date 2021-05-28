@@ -43,7 +43,7 @@ def print_optimal_chain_order(div_k, num):
     if index == num-1:
       order+= ")"
   
-  print("Optimal chain order : ", order)
+  print("\nOptimal chain order : ", order)
   
 
 
@@ -65,6 +65,7 @@ def get_min_computation(dimensions):
 
 def main():
   dimensions=[5,3,7,10]
+  print("\nDimensions: ", dimensions)
   num = len(dimensions)
   matricis = []
   for i in range(num - 1):
@@ -83,7 +84,6 @@ def main():
   if div_k == 2:
     result = matrix_multiplication(matricis[0], matricis[1])
     result = matrix_multiplication(result, matricis[2])
-  
   print("\nOutput matrix : ")
   print_matrix(result)
   print_optimal_chain_order(div_k, num)
