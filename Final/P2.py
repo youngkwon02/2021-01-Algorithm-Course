@@ -1,6 +1,6 @@
+Time = 0
 GRAPH = {
     's': {
-      'name': 's',
       'adj': ['r', 'w'],
       'color': "",
       'pie': "",
@@ -8,7 +8,6 @@ GRAPH = {
       'f': ""
     },
     'r': {
-      'name': 'r',
       'adj': ['s', 'v'],
       'color': "",
       'pie': "",
@@ -16,7 +15,6 @@ GRAPH = {
       'f': ""
     },
     'v': {
-      'name': 'v',
       'adj': [],
       'color': "",
       'pie': "",
@@ -24,7 +22,6 @@ GRAPH = {
       'f': ""
     },
     'w': {
-      'name': 'w',
       'adj': ['s', 't', 'x'],
       'color': "",
       'pie': "",
@@ -32,7 +29,6 @@ GRAPH = {
       'f': ""
     },
     't': {
-      'name': 't',
       'adj': ['w', 'x', 'u'],
       'color': "",
       'pie': "",
@@ -40,7 +36,6 @@ GRAPH = {
       'f': ""
     },
     'x': {
-      'name': 'x',
       'adj': ['w', 't', 'u', 'y'],
       'color': "",
       'pie': "",
@@ -48,7 +43,6 @@ GRAPH = {
       'f': ""
     },
     'u': {
-      'name': 'u',
       'adj': ['t', 'x', 'y'],
       'color': "",
       'pie': "",
@@ -56,7 +50,6 @@ GRAPH = {
       'f': ""
     },
     'y': {
-      'name': 'y',
       'adj': ['u', 'x'],
       'color': "",
       'pie': "",
@@ -66,29 +59,27 @@ GRAPH = {
 }
 
 
-Time = 0
-
-
 def DFS(G):
-  for name in G:
-    vertex = G[name]
+  for node_name in G:
+    vertex = G[node_name]
     vertex['color'] = "WHITE"
     vertex['pie'] = "NIL"
-  for name in G:
-    vertex = G[name]
+  for node_name in G:
+    vertex = G[node_name]
     if vertex['color'] == "WHITE":
-      DFS_Visit(vertex)
+      DFS_Visit(node_name)
       
 
-def DFS_Visit(vertex):
+def DFS_Visit(node_name):
+  vertex = GRAPH[node_name]
   global Time
   Time += 1
   vertex['d'] = Time
   vertex['color'] = "GRAY"
   for adj_v in vertex['adj']:
     if GRAPH[adj_v]['color'] == "WHITE":
-      GRAPH[adj_v]['pie'] = vertex['name']
-      DFS_Visit(GRAPH[adj_v])
+      GRAPH[adj_v]['pie'] = node_name
+      DFS_Visit(adj_v)
   vertex['color'] = "BLACK"
   Time += 1
   vertex['f'] = Time
