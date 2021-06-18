@@ -33,10 +33,29 @@ def relax(u, v):
       GRAPH[v]['pie'] = u
 
 
+def print_shortest_path(destination):
+  path = [destination]
+  while True:
+    pie = GRAPH[destination]['pie']
+    if pie == "NIL":
+      break
+    path.append(pie)
+    destination = pie
+  path.reverse()
+  for index in range(len(path)):
+    if index == len(path) - 1:
+      print(path[index])
+      break
+    print(path[index], end='→')
+
 def main():
   Dijkstra(GRAPH, 's')
-  for node in GRAPH:
-    print("Node", node, "-> d:", GRAPH[node]['d'], "𝜋:", GRAPH[node]['pie'])
+  print("Vertex s to y :", end='')
+  print_shortest_path('y')
+  print("Total costs from s to y :", GRAPH['y']['d'])
+  print("Vertex s to z :", end='')
+  print_shortest_path('z')
+  print("Total costs from s to y :", GRAPH['z']['d'])
 
 
 if __name__ == "__main__":
