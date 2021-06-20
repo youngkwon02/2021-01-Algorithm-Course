@@ -94,9 +94,7 @@ def get_h(puzzle):
 
 def main():
   global Puzzle, GOAL, g
-  iii = 0
   while True:
-    iii+=1
     if Puzzle == GOAL:
       break
     g += 1
@@ -130,10 +128,6 @@ def main():
       else:
         pass
     if flag:
-      break
-    
-    
-    if iii > 10000:
       break
     
     

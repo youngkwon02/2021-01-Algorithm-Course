@@ -1,4 +1,4 @@
-import heapq
+import heapq # For 
 
 
 GRAPH = {
@@ -10,6 +10,13 @@ GRAPH = {
 }
 
 
+def initialize(G):
+  for node_name in G:
+    GRAPH[node_name]['d'] = float("INF")
+    GRAPH[node_name]['pie'] = "NIL"
+  GRAPH['s']['d'] = 0
+
+
 def Dijkstra(G, s):
   initialize(G)
   S = []
@@ -19,12 +26,6 @@ def Dijkstra(G, s):
     S.append(u)
     for vertex in GRAPH[u]['adj']:
       relax(u, vertex)
-
-def initialize(G):
-  for node_name in G:
-    GRAPH[node_name]['d'] = float("INF")
-    GRAPH[node_name]['pie'] = "NIL"
-  GRAPH['s']['d'] = 0
   
   
 def relax(u, v):
@@ -55,7 +56,7 @@ def main():
   print("Total costs from s to y :", GRAPH['y']['d'])
   print("Vertex s to z :", end='')
   print_shortest_path('z')
-  print("Total costs from s to y :", GRAPH['z']['d'])
+  print("Total costs from s to z :", GRAPH['z']['d'])
 
 
 if __name__ == "__main__":
